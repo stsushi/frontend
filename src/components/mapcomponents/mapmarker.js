@@ -49,9 +49,9 @@ class MapMarker extends Component {
         string = string.concat(data)
         words = string.split(" ")
         const battlewords = ["skirmish","battle","fight","army","Skirmish","Battle","Fight","Army"]
-        const battlewords = ["skirmish","battle","fight","army","Skirmish","Battle","Fight","Army"]
-        const battlewords = ["skirmish","battle","fight","army","Skirmish","Battle","Fight","Army"]
-        const battlewords = ["skirmish","battle","fight","army","Skirmish","Battle","Fight","Army"]
+        const eventwords = ["3rd","1st","held","during","Skirmish","Battle","Fight","Army"]
+        const locationwords = ["skirmish","battle","fight","army","Skirmish","Battle","Fight","Army"]
+        const personwords = ["skirmish","battle","fight","army","Skirmish","Battle","Fight","Army"]
         for (i in string) {
             for(j in battlewords) {
                 if (string[i].localeCompare(battlewords[j])==0) {
