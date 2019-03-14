@@ -3,6 +3,10 @@ import {Marker, Popup} from "react-leaflet";
 import L from "leaflet"
 import util from "util"
 import "../map.css"
+import battle from "./battlemarker.png"
+import location from "./locationmarker.png"
+import event from "./eventmarker.png"
+// remember to put these in another folder
 
 class MapMarker extends Component {
 
@@ -13,42 +17,41 @@ class MapMarker extends Component {
         this.getExtract(this.props.title);
     }
     icontype(data, title) {
-        if (Mtype(data, title)=="battle"){    
+        var type = Mtype(data, title);
+        if (type.localeCompare("battle")){    
             const icon = L.icon({
-                //https://facebook.github.io/create-react-app/docs/adding-images-fonts-and-files
-                iconRetinaUrl: require(//icon we import),
-                iconUrl: require(//incon 2x)
+                iconRetinaUrl: require(battle),
+                iconUrl: require(battle)
             });
             return(L.icon)
         }
-        if (Mtype(data, title)=="event"){    
+        if (type.localeCompare("event")){    
             const icon = L.icon({
-                iconRetinaUrl: require('leaflet/dist/images/event-marker-icon-2x.png'),
-                iconUrl: require('leaflet/dist/images/event-marker-icon.png')
+                iconRetinaUrl: require(event),
+                iconUrl: require(event)
             });
             return(L.icon)
         }
-        if (Mtype(data, title)=="location"){    
+        if (type.localeCompare("location")){    
             const icon = L.icon({
-                iconRetinaUrl: require('leaflet/dist/images/local-marker-icon-2x.png'),
-                iconUrl: require('leaflet/dist/images/local-marker-icon.png')
+                iconRetinaUrl: require(location),
+                iconUrl: require(location)
             });
             return(L.icon)
         }
-        if (Mtype(data, title)=="person"){    
+        if (type.localeCompare("person")){    
             const icon = L.icon({
-                iconRetinaUrl: require('leaflet/dist/images/person-marker-icon-2x.png'),
-                iconUrl: require('leaflet/dist/images/person-marker-icon.png')
+                iconRetinaUrl: require(event),
+                iconUrl: require(event)
             });
             return(L.icon)
         }
-	if (Mtype(date, title)=="default"){
-		const icon=L.icon({
-			iconRetinaUrl: require('lealet/dist/images/marker-icon-2x.png'),
-			iconUrl: require('leaflet/dist/images/marker-icon.png')
-		});
-			
-    
+	    if (type.localeCompare("default")){
+		    const icon=L.icon({
+			    iconRetinaUrl: require('lealet/dist/images/marker-icon-2x.png'),
+			    iconUrl: require('leaflet/dist/images/marker-icon.png')
+		    });
+        }
     }
     Mtype(data, title) {
         string = title.concat(" ")
@@ -62,23 +65,20 @@ class MapMarker extends Component {
             for(j in battlewords) {
                 if (string[i].localeCompare(battlewords[j])==0) {
                     return "battle";
+                } else if (string[i].localeCompare(eventwords[j])==0) {
+                    return "event";
                 }
-		else if (string[i].localeCompare(eventwords[j]==0) {
-			return "event";
-		}
-		else if (string[i].localeCompare(locationwords[j]==0) {
-			return "location";
-		}
-		else if (string[i].localeCompare(personwords[j]==0) {
-			return "person";
-		}
-		}
-		if (i == (string.length -1)) {
-			return "default";
-		}
-            }
-        }
-        
+                else if (string[i].localeCompare(locationwords[j])==0) {
+                    return "location";
+                }
+                else if (string[i].localeCompare(personwords[j])==0) {
+                    return "person";
+                }
+		    }
+	        if (i == (string.length -1)) {
+			    return "default";
+		    }
+        }   
     }
     // add more of the same
 
