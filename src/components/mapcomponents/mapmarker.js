@@ -15,9 +15,9 @@ class MapMarker extends Component {
     icontype(data, title) {
         if (Mbattle(data, title)==true){    
             const icon = L.icon({
-                iconRetinaUrl: require('leaflet/dist/images/battle-marker-icon-2x.png'),
-                iconUrl: require('leaflet/dist/images/battle-marker-icon.png'),
-                shadowUrl: require('leaflet/dist/images/battle-marker-shadow.png')
+                //https://facebook.github.io/create-react-app/docs/adding-images-fonts-and-files
+                iconRetinaUrl: require(//icon we import),
+                iconUrl: require(//incon 2x)
             });
             return(L.icon)
         }
@@ -25,7 +25,6 @@ class MapMarker extends Component {
             const icon = L.icon({
                 iconRetinaUrl: require('leaflet/dist/images/event-marker-icon-2x.png'),
                 iconUrl: require('leaflet/dist/images/event-marker-icon.png'),
-                shadowUrl: require('leaflet/dist/images/event-marker-shadow.png')
             });
             return(L.icon)
         }
@@ -33,7 +32,6 @@ class MapMarker extends Component {
             const icon = L.icon({
                 iconRetinaUrl: require('leaflet/dist/images/local-marker-icon-2x.png'),
                 iconUrl: require('leaflet/dist/images/local-marker-icon.png'),
-                shadowUrl: require('leaflet/dist/images/loca-marker-shadow.png')
             });
             return(L.icon)
         }
@@ -41,7 +39,6 @@ class MapMarker extends Component {
             const icon = L.icon({
                 iconRetinaUrl: require('leaflet/dist/images/person-marker-icon-2x.png'),
                 iconUrl: require('leaflet/dist/images/person-marker-icon.png'),
-                shadowUrl: require('leaflet/dist/images/person-marker-shadow.png')
             });
             return(L.icon)
         }
@@ -51,6 +48,9 @@ class MapMarker extends Component {
         string = title.concat(" ")
         string = string.concat(data)
         words = string.split(" ")
+        const battlewords = ["skirmish","battle","fight","army","Skirmish","Battle","Fight","Army"]
+        const battlewords = ["skirmish","battle","fight","army","Skirmish","Battle","Fight","Army"]
+        const battlewords = ["skirmish","battle","fight","army","Skirmish","Battle","Fight","Army"]
         const battlewords = ["skirmish","battle","fight","army","Skirmish","Battle","Fight","Army"]
         for (i in string) {
             for(j in battlewords) {
