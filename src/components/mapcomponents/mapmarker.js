@@ -13,7 +13,7 @@ class MapMarker extends Component {
         this.getExtract(this.props.title);
     }
     icontype(data, title) {
-        if (Mbattle(data, title)==true){    
+        if (Mtype(data, title)=="battle"){    
             const icon = L.icon({
                 //https://facebook.github.io/create-react-app/docs/adding-images-fonts-and-files
                 iconRetinaUrl: require(//icon we import),
@@ -21,42 +21,61 @@ class MapMarker extends Component {
             });
             return(L.icon)
         }
-        if (Mevent(data, title)==true){    
+        if (Mtype(data, title)=="event"){    
             const icon = L.icon({
                 iconRetinaUrl: require('leaflet/dist/images/event-marker-icon-2x.png'),
-                iconUrl: require('leaflet/dist/images/event-marker-icon.png'),
+                iconUrl: require('leaflet/dist/images/event-marker-icon.png')
             });
             return(L.icon)
         }
-        if (Mlocation(data, title)==true){    
+        if (Mtype(data, title)=="location"){    
             const icon = L.icon({
                 iconRetinaUrl: require('leaflet/dist/images/local-marker-icon-2x.png'),
-                iconUrl: require('leaflet/dist/images/local-marker-icon.png'),
+                iconUrl: require('leaflet/dist/images/local-marker-icon.png')
             });
             return(L.icon)
         }
-        if (Mperson(data, title)==true){    
+        if (Mtype(data, title)=="person"){    
             const icon = L.icon({
                 iconRetinaUrl: require('leaflet/dist/images/person-marker-icon-2x.png'),
-                iconUrl: require('leaflet/dist/images/person-marker-icon.png'),
+                iconUrl: require('leaflet/dist/images/person-marker-icon.png')
             });
             return(L.icon)
         }
+	if (Mtype(date, title)=="default"){
+		const icon=L.icon({
+			iconRetinaUrl: require('lealet/dist/images/marker-icon-2x.png'),
+			iconUrl: require('leaflet/dist/images/marker-icon.png')
+		});
+			
     
     }
-    Mbattle(data, title) {
+    Mtype(data, title) {
         string = title.concat(" ")
         string = string.concat(data)
         words = string.split(" ")
-        const battlewords = ["skirmish","battle","fight","army","Skirmish","Battle","Fight","Army"]
-        const eventwords = ["3rd","1st","held","during","Skirmish","Battle","Fight","Army"]
-        const locationwords = ["skirmish","battle","fight","army","Skirmish","Battle","Fight","Army"]
-        const personwords = ["born","battle","fight","army","Skirmish","Battle","Fight","Army"]
+        const battlewords = ["skirmish","battle","fight","army"]
+        const eventwords = ["3rd","1st","held","during"]
+        const locationwords = ["region", "state", "city", "located"]
+        const personwords = ["born","he","she", "member"]
         for (i in string) {
             for(j in battlewords) {
                 if (string[i].localeCompare(battlewords[j])==0) {
-                    return(true)
+                    return "battle";
                 }
+		else if (string[i].localeCompare(eventwords[j]==0) {
+			return "event";
+		}
+		else if (string[i].localeCompare(locationwords[j]==0) {
+			return "location";
+		}
+		else if (string[i].localeCompare(personwords[j]==0) {
+			return "person";
+		}
+		}
+		if (i == (string.length -1)) {
+			return "default";
+		}
             }
         }
         
